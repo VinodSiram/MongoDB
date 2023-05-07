@@ -1,0 +1,774 @@
+Microsoft Windows [Version 10.0.22621.1555]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>mongosh "mongodb+srv://cluster0.ylvisrg.mongodb.net/myFirstDatabase" --apiVersion 1 --username teja
+Enter password: ****
+Current Mongosh Log ID: 6445701caa9762dcd414ad65
+Connecting to:          mongodb+srv://<credentials>@cluster0.ylvisrg.mongodb.net/myFirstDatabase?appName=mongosh+1.8.0
+Using MongoDB:          6.0.5 (API Version 1)
+Using Mongosh:          1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> show dbs
+sample_airbnb        52.35 MiB
+sample_analytics      9.35 MiB
+sample_geospatial     1.38 MiB
+sample_guides        40.00 KiB
+sample_mflix         47.60 MiB
+sample_restaurants    6.64 MiB
+sample_supplies       1.12 MiB
+sample_training      52.07 MiB
+sample_weatherdata    4.09 MiB
+tejaaaa               8.00 KiB
+admin               336.00 KiB
+local                 4.33 GiB
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> use sample_training
+switched to db sample_training
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> show tables
+book
+books
+companies
+grades
+inspections
+posts
+routes
+student_info
+trips
+zips
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.posts.count()
+DeprecationWarning: Collection.count() is deprecated. Use countDocuments or estimatedDocumentCount.
+503
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.posts.countDocuments()
+503
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.posts.estimatedDocumentCount({})
+503
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.getCollectionNames()
+[
+  'companies',    'books',
+  'grades',       'zips',
+  'trips',        'posts',
+  'book',         'routes',
+  'student_info', 'inspections'
+]
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.getCollectionInfos()
+[
+  {
+    name: 'companies',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("6c242778-ad2c-4e8b-ba47-4182f6a9bea7")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'books',
+    type: 'collection',
+    options: { capped: true, size: 15104, max: 4000 },
+    info: {
+      readOnly: false,
+      uuid: new UUID("85cd88a5-4a28-40a5-ac57-8357c4e884fe")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'grades',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("8943f66b-97ee-48bf-aad2-4452e6f124f5")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'zips',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("b28df073-a328-4893-a459-a7347fffc6c0")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'trips',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("c474523f-c2d8-4ab6-98bb-96c117497293")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'posts',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("c7915c8c-1a4f-414f-abb1-71040fd27c42")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'book',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("cc2c69cc-c744-4b99-aba8-0abd015e29cb")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'routes',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("d5326be7-e4b1-4013-b79f-07e70d830665")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'student_info',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("db288644-577f-466c-8ba6-7961c2315e05")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  },
+  {
+    name: 'inspections',
+    type: 'collection',
+    options: {},
+    info: {
+      readOnly: false,
+      uuid: new UUID("dd99c2a1-a9a4-4447-9f58-eb3cfbc022dc")
+    },
+    idIndex: { v: 2, key: { _id: 1 }, name: '_id_' }
+  }
+]
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.books.stats()
+{
+  ok: 1,
+  capped: true,
+  max: 4000,
+  wiredTiger: {
+    metadata: { formatVersion: 1 },
+    creationString: 'access_pattern_hint=none,allocation_size=4KB,app_metadata=(formatVersion=1),assert=(commit_timestamp=none,durable_timestamp=none,read_timestamp=none,write_timestamp=off),block_allocation=best,block_compressor=snappy,cache_resident=false,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=false,extractor=,format=btree,huffman_key=,huffman_value=,ignore_in_memory_cache_size=false,immutable=false,import=(compare_timestamp=oldest_timestamp,enabled=false,file_metadata=,metadata_file=,repair=false),internal_item_max=0,internal_key_max=0,internal_key_truncate=true,internal_page_max=4KB,key_format=q,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=32KB,leaf_value_max=64MB,log=(enabled=false),lsm=(auto_throttle=true,bloom=true,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=false,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_custom=(prefix=,start_generation=0,suffix=),merge_max=15,merge_min=0),memory_page_image_max=0,memory_page_max=10m,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=false,prefix_compression_min=4,readonly=false,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=90,tiered_object=false,tiered_storage=(auth_token=,bucket=,bucket_prefix=,cache_directory=,local_retention=300,name=,object_target_size=0),type=file,value_format=u,verbose=[],write_timestamp_usage=none',
+    type: 'file',
+    uri: 'statistics:table:collection-15720-4218479985996260545',
+    LSM: {
+      'bloom filter false positives': 0,
+      'bloom filter hits': 0,
+      'bloom filter misses': 0,
+      'bloom filter pages evicted from cache': 0,
+      'bloom filter pages read into cache': 0,
+      'bloom filters in the LSM tree': 0,
+      'chunks in the LSM tree': 0,
+      'highest merge generation in the LSM tree': 0,
+      'queries that could have benefited from a Bloom filter that did not exist': 0,
+      'sleep for LSM checkpoint throttle': 0,
+      'sleep for LSM merge throttle': 0,
+      'total size of bloom filters': 0
+    },
+    'block-manager': {
+      'allocations requiring file extension': 10,
+      'blocks allocated': 20,
+      'blocks freed': 4,
+      'checkpoint size': 4096,
+      'file allocation unit size': 4096,
+      'file bytes available for reuse': 16384,
+      'file magic number': 120897,
+      'file major version number': 1,
+      'file size in bytes': 36864,
+      'minor version number': 0
+    },
+    btree: {
+      'btree checkpoint generation': 9173,
+      'btree clean tree checkpoint expiration time': Long("9223372036854775807"),
+      'btree compact pages reviewed': 0,
+      'btree compact pages rewritten': 0,
+      'btree compact pages skipped': 0,
+      'btree skipped by compaction as process would not reduce size': 0,
+      'column-store fixed-size leaf pages': 0,
+      'column-store fixed-size time windows': 0,
+      'column-store internal pages': 0,
+      'column-store variable-size RLE encoded values': 0,
+      'column-store variable-size deleted values': 0,
+      'column-store variable-size leaf pages': 0,
+      'fixed-record size': 0,
+      'maximum internal page size': 4096,
+      'maximum leaf page key size': 2867,
+      'maximum leaf page size': 32768,
+      'maximum leaf page value size': 67108864,
+      'maximum tree depth': 3,
+      'number of key/value pairs': 0,
+      'overflow pages': 0,
+      'row-store empty values': 0,
+      'row-store internal pages': 0,
+      'row-store leaf pages': 0
+    },
+    cache: {
+      'bytes currently in the cache': 2505,
+      'bytes dirty in the cache cumulative': 9776,
+      'bytes read into cache': 0,
+      'bytes written from cache': 3100,
+      'checkpoint blocked page eviction': 0,
+      'checkpoint of history store file blocked non-history store page eviction': 0,
+      'data source pages selected for eviction unable to be evicted': 0,
+      'eviction gave up due to detecting an out of order on disk value behind the last update on the chain': 0,
+      'eviction gave up due to detecting an out of order tombstone ahead of the selected on disk update': 0,
+      'eviction gave up due to detecting an out of order tombstone ahead of the selected on disk update after validating the update chain': 0,
+      'eviction gave up due to detecting out of order timestamps on the update chain after the selected on disk update': 0,
+      'eviction gave up due to needing to remove a record from the history store but checkpoint is running': 0,
+      'eviction walk passes of a file': 0,
+      'eviction walk target pages histogram - 0-9': 0,
+      'eviction walk target pages histogram - 10-31': 0,
+      'eviction walk target pages histogram - 128 and higher': 0,
+      'eviction walk target pages histogram - 32-63': 0,
+      'eviction walk target pages histogram - 64-128': 0,
+      'eviction walk target pages reduced due to history store cache pressure': 0,
+      'eviction walks abandoned': 0,
+      'eviction walks gave up because they restarted their walk twice': 0,
+      'eviction walks gave up because they saw too many pages and found no candidates': 0,
+      'eviction walks gave up because they saw too many pages and found too few candidates': 0,
+      'eviction walks reached end of tree': 0,
+      'eviction walks restarted': 0,
+      'eviction walks started from root of tree': 0,
+      'eviction walks started from saved location in tree': 0,
+      'hazard pointer blocked page eviction': 0,
+      'history store table insert calls': 0,
+      'history store table insert calls that returned restart': 0,
+      'history store table out-of-order resolved updates that lose their durable timestamp': 0,
+      'history store table out-of-order updates that were fixed up by reinserting with the fixed timestamp': 0,
+      'history store table reads': 0,
+      'history store table reads missed': 0,
+      'history store table reads requiring squashed modifies': 0,
+      'history store table truncation by rollback to stable to remove an unstable update': 0,
+      'history store table truncation by rollback to stable to remove an update': 0,
+      'history store table truncation to remove an update': 0,
+      'history store table truncation to remove range of updates due to key being removed from the data page during reconciliation': 0,
+      'history store table truncation to remove range of updates due to out-of-order timestamp update on data page': 0,
+      'history store table writes requiring squashed modifies': 0,
+      'in-memory page passed criteria to be split': 0,
+      'in-memory page splits': 0,
+      'internal pages evicted': 0,
+      'internal pages split during eviction': 0,
+      'leaf pages split during eviction': 0,
+      'modified pages evicted': 0,
+      'overflow pages read into cache': 0,
+      'page split during eviction deepened the tree': 0,
+      'page written requiring history store records': 0,
+      'pages read into cache': 0,
+      'pages read into cache after truncate': 1,
+      'pages read into cache after truncate in prepare state': 0,
+      'pages requested from the cache': 28,
+      'pages seen by eviction walk': 0,
+      'pages written from cache': 10,
+      'pages written requiring in-memory restoration': 0,
+      'the number of times full update inserted to history store': 0,
+      'the number of times reverse modify inserted to history store': 0,
+      'tracked dirty bytes in the cache': 0,
+      'unmodified pages evicted': 0
+    },
+    cache_walk: {
+      'Average difference between current eviction generation when the page was last considered': 0,
+      'Average on-disk page image size seen': 0,
+      'Average time in cache for pages that have been visited by the eviction server': 0,
+      'Average time in cache for pages that have not been visited by the eviction server': 0,
+      'Clean pages currently in cache': 0,
+      'Current eviction generation': 0,
+      'Dirty pages currently in cache': 0,
+      'Entries in the root page': 0,
+      'Internal pages currently in cache': 0,
+      'Leaf pages currently in cache': 0,
+      'Maximum difference between current eviction generation when the page was last considered': 0,
+      'Maximum page size seen': 0,
+      'Minimum on-disk page image size seen': 0,
+      'Number of pages never visited by eviction server': 0,
+      'On-disk page image sizes smaller than a single allocation unit': 0,
+      'Pages created in memory and never written': 0,
+      'Pages currently queued for eviction': 0,
+      'Pages that could not be queued for eviction': 0,
+      'Refs skipped during cache traversal': 0,
+      'Size of the root page': 0,
+      'Total number of pages currently in cache': 0
+    },
+    'checkpoint-cleanup': {
+      'pages added for eviction': 0,
+      'pages removed': 0,
+      'pages skipped during tree walk': 0,
+      'pages visited': 5
+    },
+    compression: {
+      'compressed page maximum internal page size prior to compression': 4096,
+      'compressed page maximum leaf page size prior to compression ': 131072,
+      'compressed pages read': 0,
+      'compressed pages written': 0,
+      'number of blocks with compress ratio greater than 64': 0,
+      'number of blocks with compress ratio smaller than 16': 0,
+      'number of blocks with compress ratio smaller than 2': 0,
+      'number of blocks with compress ratio smaller than 32': 0,
+      'number of blocks with compress ratio smaller than 4': 0,
+      'number of blocks with compress ratio smaller than 64': 0,
+      'number of blocks with compress ratio smaller than 8': 0,
+      'page written failed to compress': 0,
+      'page written was too small to compress': 10
+    },
+    cursor: {
+      'Total number of entries skipped by cursor next calls': 6,
+      'Total number of entries skipped by cursor prev calls': 1,
+      'Total number of entries skipped to position the history store cursor': 0,
+      'Total number of times a search near has exited due to prefix config':
+ 0,
+      'bulk loaded cursor insert calls': 0,
+      'cache cursors reuse count': 14,
+      'close calls that result in cache': 16,
+      'create calls': 16,
+      'cursor next calls that skip due to a globally visible history store tombstone': 0,
+      'cursor next calls that skip greater than or equal to 100 entries': 0,
+      'cursor next calls that skip less than 100 entries': 43,
+      'cursor prev calls that skip due to a globally visible history store tombstone': 0,
+      'cursor prev calls that skip greater than or equal to 100 entries': 0,
+      'cursor prev calls that skip less than 100 entries': 2,
+      'insert calls': 7,
+      'insert key and value bytes': 509,
+      modify: 0,
+      'modify key and value bytes affected': 0,
+      'modify value bytes modified': 0,
+      'next calls': 43,
+      'open cursor count': 0,
+      'operation restarted': 0,
+      'prev calls': 2,
+      'remove calls': 3,
+      'remove key bytes removed': 3,
+      'reserve calls': 0,
+      'reset calls': 42,
+      'search calls': 3,
+      'search history store calls': 0,
+      'search near calls': 3,
+      'truncate calls': 0,
+      'update calls': 0,
+      'update key and value bytes': 0,
+      'update value size change': 0
+    },
+    reconciliation: {
+      'approximate byte size of timestamps in pages written': 320,
+      'approximate byte size of transaction IDs in pages written': 160,
+      'dictionary matches': 0,
+      'fast-path pages deleted': 0,
+      'internal page key bytes discarded using suffix compression': 0,
+      'internal page multi-block writes': 0,
+      'leaf page key bytes discarded using prefix compression': 0,
+      'leaf page multi-block writes': 0,
+      'leaf-page overflow keys': 0,
+      'maximum blocks required for a page': 1,
+      'overflow values written': 0,
+      'page checksum matches': 0,
+      'page reconciliation calls': 10,
+      'page reconciliation calls for eviction': 0,
+      'pages deleted': 0,
+      'pages written including an aggregated newest start durable timestamp ': 5,
+      'pages written including an aggregated newest stop durable timestamp ': 3,
+      'pages written including an aggregated newest stop timestamp ': 0,
+      'pages written including an aggregated newest stop transaction ID': 0,
+      'pages written including an aggregated newest transaction ID ': 5,
+      'pages written including an aggregated oldest start timestamp ': 1,
+      'pages written including an aggregated prepare': 0,
+      'pages written including at least one prepare': 0,
+      'pages written including at least one start durable timestamp': 5,
+      'pages written including at least one start timestamp': 5,
+      'pages written including at least one start transaction ID': 5,
+      'pages written including at least one stop durable timestamp': 3,
+      'pages written including at least one stop timestamp': 3,
+      'pages written including at least one stop transaction ID': 3,
+      'records written including a prepare': 0,
+      'records written including a start durable timestamp': 13,
+      'records written including a start timestamp': 13,
+      'records written including a start transaction ID': 13,
+      'records written including a stop durable timestamp': 7,
+      'records written including a stop timestamp': 7,
+      'records written including a stop transaction ID': 7
+    },
+    session: {
+      'object compaction': 0,
+      'tiered operations dequeued and processed': 0,
+      'tiered operations scheduled': 0,
+      'tiered storage local retention time (secs)': 0
+    },
+    transaction: {
+      'race to read prepared update retry': 0,
+      'rollback to stable history store records with stop timestamps older than newer records': 0,
+      'rollback to stable inconsistent checkpoint': 0,
+      'rollback to stable keys removed': 0,
+      'rollback to stable keys restored': 0,
+      'rollback to stable restored tombstones from history store': 0,
+      'rollback to stable restored updates from history store': 0,
+      'rollback to stable skipping delete rle': 0,
+      'rollback to stable skipping stable rle': 0,
+      'rollback to stable sweeping history store keys': 0,
+      'rollback to stable updates removed from history store': 0,
+      'transaction checkpoints due to obsolete pages': 0,
+      'update conflicts': 0
+    }
+  },
+  sharded: false,
+  size: 290,
+  count: 4,
+  numOrphanDocs: 0,
+  storageSize: 36864,
+  totalIndexSize: 36864,
+  totalSize: 73728,
+  indexSizes: { _id_: 36864 },
+  avgObjSize: 72,
+  maxSize: 15104,
+  ns: 'sample_training.books',
+  nindexes: 1,
+  scaleFactor: 1
+}
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.createCollection("stores")
+{ ok: 1 }
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> show collections
+book
+books
+companies
+grades
+inspections
+posts
+routes
+stores
+student_info
+trips
+zips
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.trips.find({})
+[
+  {
+    _id: ObjectId("572bb8222b288919b68abf5e"),
+    tripduration: 332,
+    'start station id': 3104,
+    'start station name': 'Kent Ave & N 7 St',
+    'end station id': 389,
+    'end station name': 'Broadway & Berry St',
+    bikeid: 15788,
+    usertype: 'Subscriber',
+    'birth year': 1984,
+    'start station location': { type: 'Point', coordinates: [ -73.96150225, 40.72057658 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.96525063, 40.71044554 ] },
+    'start time': ISODate("2016-01-01T00:01:19.000Z"),
+    'stop time': ISODate("2016-01-01T00:06:51.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf69"),
+    tripduration: 1245,
+    'start station id': 442,
+    'start station name': 'W 27 St & 7 Ave',
+    'end station id': 545,
+    'end station name': 'E 23 St & 1 Ave',
+    bikeid: 24071,
+    usertype: 'Subscriber',
+    'birth year': 1970,
+    'start station location': { type: 'Point', coordinates: [ -73.993915, 40.746647 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.97809472, 40.736502 ] },
+    'start time': ISODate("2016-01-01T00:08:17.000Z"),
+    'stop time': ISODate("2016-01-01T00:29:03.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf5d"),
+    tripduration: 923,
+    'start station id': 268,
+    'start station name': 'Howard St & Centre St',
+    'end station id': 3002,
+    'end station name': 'South End Ave & Liberty St',
+    bikeid: 22285,
+    usertype: 'Subscriber',
+    'birth year': 1958,
+    'start station location': { type: 'Point', coordinates: [ -73.99973337, 40.71910537 ] },
+    'end station location': { type: 'Point', coordinates: [ -74.015756, 40.711512 ] },
+    'start time': ISODate("2016-01-01T00:00:41.000Z"),
+    'stop time': ISODate("2016-01-01T00:16:04.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf63"),
+    tripduration: 615,
+    'start station id': 432,
+    'start station name': 'E 7 St & Avenue A',
+    'end station id': 311,
+    'end station name': 'Norfolk St & Broome St',
+    bikeid: 23993,
+    usertype: 'Subscriber',
+    'birth year': 1971,
+    'start station location': { type: 'Point', coordinates: [ -73.98379855, 40.72621788 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98802084, 40.7172274 ] },
+    'start time': ISODate("2016-01-01T00:03:43.000Z"),
+    'stop time': ISODate("2016-01-01T00:13:59.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf65"),
+    tripduration: 525,
+    'start station id': 331,
+    'start station name': 'Pike St & Monroe St',
+    'end station id': 236,
+    'end station name': 'St Marks Pl & 2 Ave',
+    bikeid: 22193,
+    usertype: 'Subscriber',
+    'birth year': 1988,
+    'start station location': { type: 'Point', coordinates: [ -73.99193043, 40.71173107 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98713956, 40.7284186 ] },
+    'start time': ISODate("2016-01-01T00:05:40.000Z"),
+    'stop time': ISODate("2016-01-01T00:14:25.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf6b"),
+    tripduration: 398,
+    'start station id': 483,
+    'start station name': 'E 12 St & 3 Ave',
+    'end station id': 483,
+    'end station name': 'E 12 St & 3 Ave',
+    bikeid: 15721,
+    usertype: 'Subscriber',
+    'birth year': 1972,
+    'start station location': { type: 'Point', coordinates: [ -73.98889957, 40.73223272 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98889957, 40.73223272 ] },
+    'start time': ISODate("2016-01-01T00:09:19.000Z"),
+    'stop time': ISODate("2016-01-01T00:15:58.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf70"),
+    tripduration: 110,
+    'start station id': 439,
+    'start station name': 'E 4 St & 2 Ave',
+    'end station id': 439,
+    'end station name': 'E 4 St & 2 Ave',
+    bikeid: 24021,
+    usertype: 'Customer',
+    'birth year': '',
+    'start station location': { type: 'Point', coordinates: [ -73.98978041, 40.7262807 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98978041, 40.7262807 ] },
+    'start time': ISODate("2016-01-01T00:10:24.000Z"),
+    'stop time': ISODate("2016-01-01T00:12:15.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf77"),
+    tripduration: 662,
+    'start station id': 3175,
+    'start station name': 'W 70 St & Amsterdam Ave',
+    'end station id': 3166,
+    'end station name': 'Riverside Dr & W 72 St',
+    bikeid: 22560,
+    usertype: 'Subscriber',
+    'birth year': 1976,
+    'start station location': { type: 'Point', coordinates: [ -73.98288594, 40.77748046 ] },
+    'end station location': {
+      type: 'Point',
+      coordinates: [ -73.98562431335449, 40.78057799010334 ]
+    },
+    'start time': ISODate("2016-01-01T00:12:16.000Z"),
+    'stop time': ISODate("2016-01-01T00:23:19.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf7a"),
+    tripduration: 1684,
+    'start station id': 439,
+    'start station name': 'E 4 St & 2 Ave',
+    'end station id': 385,
+    'end station name': 'E 55 St & 2 Ave',
+    bikeid: 22661,
+    usertype: 'Customer',
+    'birth year': '',
+    'start station location': { type: 'Point', coordinates: [ -73.98978041, 40.7262807 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.96603308, 40.75797322 ] },
+    'start time': ISODate("2016-01-01T00:12:46.000Z"),
+    'stop time': ISODate("2016-01-01T00:40:51.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf7c"),
+    tripduration: 404,
+    'start station id': 3138,
+    'start station name': 'E 77 St & Park Ave',
+    'end station id': 3134,
+    'end station name': '3 Ave & E 62 St',
+    bikeid: 22965,
+    usertype: 'Subscriber',
+    'birth year': 1966,
+    'start station location': {
+      type: 'Point',
+      coordinates: [ -73.96175265312193, 40.774405455003 ]
+    },
+    'end station location': { type: 'Point', coordinates: [ -73.96526895, 40.76312584 ] },
+    'start time': ISODate("2016-01-01T00:13:01.000Z"),
+    'stop time': ISODate("2016-01-01T00:19:45.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf7f"),
+    tripduration: 272,
+    'start station id': 3002,
+    'start station name': 'South End Ave & Liberty St',
+    'end station id': 264,
+    'end station name': 'Maiden Ln & Pearl St',
+    bikeid: 21619,
+    usertype: 'Subscriber',
+    'birth year': 1989,
+    'start station location': { type: 'Point', coordinates: [ -74.015756, 40.711512 ] },
+    'end station location': { type: 'Point', coordinates: [ -74.00731853, 40.70706456 ] },
+    'start time': ISODate("2016-01-01T00:13:45.000Z"),
+    'stop time': ISODate("2016-01-01T00:18:17.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf82"),
+    tripduration: 812,
+    'start station id': 518,
+    'start station name': 'E 39 St & 2 Ave',
+    'end station id': 433,
+    'end station name': 'E 13 St & Avenue A',
+    bikeid: 14785,
+    usertype: 'Subscriber',
+    'birth year': 1977,
+    'start station location': { type: 'Point', coordinates: [ -73.9734419, 40.74780373 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98057249, 40.72955361 ] },
+    'start time': ISODate("2016-01-01T00:14:48.000Z"),
+    'stop time': ISODate("2016-01-01T00:28:21.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf84"),
+    tripduration: 967,
+    'start station id': 491,
+    'start station name': 'E 24 St & Park Ave S',
+    'end station id': 495,
+    'end station name': 'W 47 St & 10 Ave',
+    bikeid: 22478,
+    usertype: 'Subscriber',
+    'birth year': 1974,
+    'start station location': { type: 'Point', coordinates: [ -73.98602213, 40.74096374 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.99301222, 40.76269882 ] },
+    'start time': ISODate("2016-01-01T00:15:30.000Z"),
+    'stop time': ISODate("2016-01-01T00:31:38.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf85"),
+    tripduration: 1092,
+    'start station id': 280,
+    'start station name': 'E 10 St & 5 Ave',
+    'end station id': 527,
+    'end station name': 'E 33 St & 2 Ave',
+    bikeid: 15713,
+    usertype: 'Subscriber',
+    'birth year': 1990,
+    'start station location': { type: 'Point', coordinates: [ -73.99510132, 40.73331967 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.976056, 40.744023 ] },
+    'start time': ISODate("2016-01-01T00:16:04.000Z"),
+    'stop time': ISODate("2016-01-01T00:34:16.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf86"),
+    tripduration: 1087,
+    'start station id': 280,
+    'start station name': 'E 10 St & 5 Ave',
+    'end station id': 527,
+    'end station name': 'E 33 St & 2 Ave',
+    bikeid: 20945,
+    usertype: 'Subscriber',
+    'birth year': 1990,
+    'start station location': { type: 'Point', coordinates: [ -73.99510132, 40.73331967 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.976056, 40.744023 ] },
+    'start time': ISODate("2016-01-01T00:16:08.000Z"),
+    'stop time': ISODate("2016-01-01T00:34:15.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abf9e"),
+    tripduration: 377,
+    'start station id': 445,
+    'start station name': 'E 10 St & Avenue A',
+    'end station id': 410,
+    'end station name': 'Suffolk St & Stanton St',
+    bikeid: 22270,
+    usertype: 'Subscriber',
+    'birth year': 1975,
+    'start station location': { type: 'Point', coordinates: [ -73.98142006, 40.72740794 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.98517977, 40.72066442 ] },
+    'start time': ISODate("2016-01-01T00:20:04.000Z"),
+    'stop time': ISODate("2016-01-01T00:26:21.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abfa8"),
+    tripduration: 222,
+    'start station id': 358,
+    'start station name': 'Christopher St & Greenwich St',
+    'end station id': 284,
+    'end station name': 'Greenwich Ave & 8 Ave',
+    bikeid: 17742,
+    usertype: 'Subscriber',
+    'birth year': 1966,
+    'start station location': { type: 'Point', coordinates: [ -74.00711384, 40.73291553 ] },
+    'end station location': { type: 'Point', coordinates: [ -74.0026376103, 40.7390169121 ] },
+    'start time': ISODate("2016-01-01T00:21:15.000Z"),
+    'stop time': ISODate("2016-01-01T00:24:58.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abfb0"),
+    tripduration: 2165,
+    'start station id': 3136,
+    'start station name': '5 Ave & E 63 St',
+    'end station id': 284,
+    'end station name': 'Greenwich Ave & 8 Ave',
+    bikeid: 22093,
+    usertype: 'Subscriber',
+    'birth year': 1978,
+    'start station location': { type: 'Point', coordinates: [ -73.97147595, 40.76650452 ] },
+    'end station location': { type: 'Point', coordinates: [ -74.0026376103, 40.7390169121 ] },
+    'start time': ISODate("2016-01-01T00:24:32.000Z"),
+    'stop time': ISODate("2016-01-01T01:00:37.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abfb5"),
+    tripduration: 1475,
+    'start station id': 3143,
+    'start station name': '5 Ave & E 78 St',
+    'end station id': 524,
+    'end station name': 'W 43 St & 6 Ave',
+    bikeid: 21254,
+    usertype: 'Customer',
+    'birth year': '',
+    'start station location': {
+      type: 'Point',
+      coordinates: [ -73.96388769149779, 40.77682863439968 ]
+    },
+    'end station location': { type: 'Point', coordinates: [ -73.98316936, 40.75527307 ] },
+    'start time': ISODate("2016-01-01T00:25:59.000Z"),
+    'stop time': ISODate("2016-01-01T00:50:34.000Z")
+  },
+  {
+    _id: ObjectId("572bb8222b288919b68abfbb"),
+    tripduration: 2426,
+    'start station id': 217,
+    'start station name': 'Old Fulton St',
+    'end station id': 263,
+    'end station name': 'Elizabeth St & Hester St',
+    bikeid: 24152,
+    usertype: 'Customer',
+    'birth year': '',
+    'start station location': { type: 'Point', coordinates: [ -73.99383605, 40.70277159 ] },
+    'end station location': { type: 'Point', coordinates: [ -73.996375, 40.71729 ] },
+    'start time': ISODate("2016-01-01T00:26:45.000Z"),
+    'stop time': ISODate("2016-01-01T01:07:11.000Z")
+  }
+]
+Type "it" for more
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.createCollection('capcoll',{capped:true,size :15000,max: 4000})
+{ ok: 1 }
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.newcollection.isCapped()
+MongoshRuntimeError: collection sample_training.newcollection not found
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.cap.isCapped()
+MongoshRuntimeError: collection sample_training.cap not found
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.capcoll.isCapped()
+true
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.books.isCapped()
+true
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.stores.isCapped()
+false

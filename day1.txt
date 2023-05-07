@@ -1,0 +1,161 @@
+Microsoft Windows [Version 10.0.22621.1555]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\DELL>mongosh "mongodb+srv://cluster0.ylvisrg.mongodb.net/myFirstDatabase" --apiVersion 1 --username teja
+Enter password: ****
+Current Mongosh Log ID: 644409e37b0f85c3e3b2ef88
+Connecting to:          mongodb+srv://<credentials>@cluster0.ylvisrg.mongodb.net/myFirstDatabase?appName=mongosh+1.8.0
+Using MongoDB:          6.0.5 (API Version 1)
+Using Mongosh:          1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> show dbs
+sample_airbnb        52.35 MiB
+sample_analytics      9.35 MiB
+sample_geospatial     1.38 MiB
+sample_guides        40.00 KiB
+sample_mflix         47.60 MiB
+sample_restaurants    6.64 MiB
+sample_supplies       1.12 MiB
+sample_training      51.93 MiB
+sample_weatherdata    4.09 MiB
+tejaaaa               8.00 KiB
+admin               336.00 KiB
+local                 4.33 GiB
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> db.adminCommand('listDatabases')
+{
+  databases: [
+    {
+      name: 'sample_airbnb',
+      sizeOnDisk: Long("54890496"),
+      empty: false
+    },
+    {
+      name: 'sample_analytics',
+      sizeOnDisk: Long("9801728"),
+      empty: false
+    },
+    {
+      name: 'sample_geospatial',
+      sizeOnDisk: Long("1449984"),
+      empty: false
+    },
+    { name: 'sample_guides', sizeOnDisk: Long("40960"), empty: false },
+    {
+      name: 'sample_mflix',
+      sizeOnDisk: Long("49913856"),
+      empty: false
+    },
+    {
+      name: 'sample_restaurants',
+      sizeOnDisk: Long("6959104"),
+      empty: false
+    },
+    {
+      name: 'sample_supplies',
+      sizeOnDisk: Long("1171456"),
+      empty: false
+    },
+    {
+      name: 'sample_training',
+      sizeOnDisk: Long("54456320"),
+      empty: false
+    },
+    {
+      name: 'sample_weatherdata',
+      sizeOnDisk: Long("4284416"),
+      empty: false
+    },
+    { name: 'tejaaaa', sizeOnDisk: Long("8192"), empty: false },
+    { name: 'admin', sizeOnDisk: Long("344064"), empty: false },
+    { name: 'local', sizeOnDisk: Long("4650758144"), empty: false }
+  ],
+  totalSize: Long("4834078720"),
+  totalSizeMb: Long("4610"),
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1682180849, i: 18 }),
+    signature: {
+      hash: Binary(Buffer.from("445f4f30cfe56816c5ed448da24878b7f3b3f6cd", "hex"), 0),
+      keyId: Long("7175571719346716673")
+    }
+  },
+  operationTime: Timestamp({ t: 1682180849, i: 18 })
+}
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> db.getMongo().getDBNames()
+[
+  'sample_airbnb',
+  'sample_analytics',
+  'sample_geospatial',
+  'sample_guides',
+  'sample_mflix',
+  'sample_restaurants',
+  'sample_supplies',
+  'sample_training',
+  'sample_weatherdata',
+  'tejaaaa',
+  'admin',
+  'local'
+]
+Atlas atlas-dsrabt-shard-0 [primary] myFirstDatabase> use sample_training
+switched to db sample_training
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> show collections
+companies
+grades
+inspections
+posts
+routes
+student_info
+trips
+zips
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> show tables
+companies
+grades
+inspections
+posts
+routes
+student_info
+trips
+zips
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.getCollectionNames()
+[
+  'companies',
+  'grades',
+  'zips',
+  'trips',
+  'posts',
+  'routes',
+  'student_info',
+  'inspections'
+]
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.posts.insert({"name":"teja","age":20})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("64440d18762329bc3c0669e6") }
+}
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> show dbs
+sample_airbnb        52.35 MiB
+sample_analytics      9.35 MiB
+sample_geospatial     1.38 MiB
+sample_guides        40.00 KiB
+sample_mflix         47.60 MiB
+sample_restaurants    6.64 MiB
+sample_supplies       1.12 MiB
+sample_training      52.00 MiB
+sample_weatherdata    4.09 MiB
+tejaaaa               8.00 KiB
+admin               336.00 KiB
+local                 4.33 GiB
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> use sample_training
+already on db sample_training
+
+Atlas atlas-dsrabt-shard-0 [primary] sample_training> db.posts.insertMany([{"name":"raj","age":40},{"name":"vinod","age":30}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("644410d6762329bc3c0669e7"),
+    '1': ObjectId("644410d6762329bc3c0669e8")
+  }
+}
